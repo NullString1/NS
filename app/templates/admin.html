@@ -1,0 +1,85 @@
+<!-- templates/admin.html -->
+
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-3">
+            <div class="row">
+                <div class="col-10 border">
+                    <a class="p-2 d-flex justify-content-center align-items-center font-weight-bold" id="list-home-list">File list</a>
+                </div>
+                <div class="col-2 border px-0 pt-1">
+                    <button id="newfileB" type="button" class="btn btn-primary btn-sm">+</button>
+                </div>
+            </div>
+            {% for file in filelist %}
+            <div class="row">
+                <div class="col-10 border px-0">
+                    <a class="btn btn-light w-100 btn-primary" data-bs-toggle="list" href="#list-{{ file.replace(".","") }}" role="tab" aria-controls="list-{{ file.replace(".","") }}" onclick="f('{{ file }}', this)">{{ file }}</a>
+                </div>
+                <div class="col-2 border px-0 pt-1">
+                    <button id="delfileB" type="button" class="btn btn-danger btn-sm" onclick="d('{{ file }}')">-</button>
+                </div>
+            </div>
+            {% endfor %}
+        <button id="saveB" type="button" class="btn btn-success mt-1">Save file</button>
+        <button id="cancelB" type="button" class="btn btn-danger mt-1">Discard changes</button>
+    </div>
+    <div class="col-9" id="container" style="width:700px;height:80vh;text-align:initial !important;"></div>
+</div>
+
+<script>
+    var f = function (p, e){
+        $(".btn.w-100.btn-primary").addClass("btn-light");
+        $(e).toggleClass("btn-light");
+
+        $.get("/nsadmin/file?f="+p, function( data ) {
+            document.editor.getModel().dispose();
+            let model = monaco.editor.createModel(data, undefined, monaco.Uri.file(p));
+            document.editor.setModel(model);
+        });
+    }
+    var d = function (p){
+        $.get("/nsadmin/del?f="+p);
+        setTimeout(function() {
+            location.reload();
+        }, 200);
+        
+    }
+    $("#saveB").click(function(){
+        let p = document.editor.getModel().uri.path.substr(1);
+        $.post( "/nsadmin/file?f="+p, data={"data": document.editor.getValue()}, function( data ) {
+            alert("Saved");
+        });
+    });
+    $("#cancelB").click(function(){
+        $(".list-group-item.list-group-item-action.active")[0].click();
+    });
+    $("#newfileB").click(function(){
+        let fName = prompt("New file", "static/filename.txt");
+        if (fName != null){
+            $.post( "/nsadmin/file?f="+fName, data={"data": ""}, function( data ) {
+                location.reload();
+            });
+        }
+    })
+</script>
+<script src="{{ url_for('static', filename='node_modules/monaco-editor/min/vs/loader.js') }}"></script>
+<script>
+    require.config({ paths: { 'vs': "{{ url_for('static', filename='node_modules/monaco-editor/min/vs') }}" }});
+    require(["vs/editor/editor.main"], function () {
+        document.editor = monaco.editor.create(document.getElementById('container'), {
+            value: [
+                'function showCode() {',
+                '\tconsole.log("Select a file from the list on the left");',
+                '}'
+            ].join('\n'),
+            language: 'javascript',
+            theme: 'vs-dark'
+        });
+    });
+</script>
+
+{% endblock %}
+    
+    

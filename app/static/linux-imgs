@@ -1,0 +1,6 @@
+| Image | local |
+| - | - |
+[Kali](https://www.kali.org/get-kali/#kali-bare-metal) | [Local (2021.3a, netinst, amd64)](files/pc/linux/kali-linux-2021.3a-installer-netinst-amd64.iso)
+[Tails](https://tails.boum.org/install/download/index.en.html) | [Local (4.24, amd64)](files/pc/linux/tails-amd64-4.24.img)
+[Ubuntu](https://ubuntu.com/download/desktop)
+[Rasbian (Raspberry Pi OS)](https://www.raspberrypi.com/software/operating-systems/)

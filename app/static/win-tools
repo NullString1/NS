@@ -1,0 +1,13 @@
+| Name | Local link | 
+| ----------- | ----------- |
+| [Etcher](https://www.balena.io/etcher/) | [Local (1.7.1, Portable)](files/pc/windows/tools/balenaEtcher-Portable-1.7.1.exe) | 
+| [SD Card Formatter](https://www.sdcard.org/downloads/formatter/sd-memory-card-formatter-for-windows-download/) | [Local (5.0.1)](<files/pc/windows/tools/SD Card Formatter 5.0.1 Setup.exe>) | 
+| [Wireshark](https://www.wireshark.org/download.html) |[Local (3.6.0, Portable)](WiresharkPortable64_3.6.0.paf.exe) | 
+| [Python 3.10](https://www.python.org/downloads/) | [Local (3.10.0)](<files/pc/windows/tools/python-3.10.0-amd64.exe>) | 
+| [Ghidra](https://ghidra-sre.org/) | [Local (10.1)](files/pc/windows/tools/ghidra_10.1-BETA_PUBLIC_20211116.zip) | 
+| [Process Explorer](https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer) | [Local](files/pc/windows/tools/ProcessExplorer.zip) | 
+| [Process Hacker](https://github.com/processhacker/processhacker) | [Local (2.39)](files/pc/windows/tools/processhacker-2.39.zip) | 
+| [DDU](https://www.guru3d.com/files-details/display-driver-uninstaller-download.html) | [Local (18.0.4.6)](<files/pc/windows/tools/DDU v18.0.4.6.exe>) | 
+| [BlueScreenView](https://www.bleepingcomputer.com/download/bluescreenview/) | [Local](files/pc/windows/tools/BlueScreenView.exe) | 
+| [Process Monitor](https://docs.microsoft.com/en-us/sysinternals/downloads/procmon) | [Local](files/pc/windows/tools/ProcessMonitor.zip) | 
+| [Burp Suite](https://portswigger.net/burp/releases) | [Local](files/pc/windows/tools/burpsuite_community_windows-x64_v2021_10_3.exe) | 

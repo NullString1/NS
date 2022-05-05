@@ -1,0 +1,5 @@
+1. Run your own KMS server using [py-kms](https://github.com/Py-KMS-Organization/py-kms) or use a public one (s8.uk.to)
+2. Find your GVLK key ([Microsoft Technet](https://technet.microsoft.com/en-us/library/jj612867.aspx), [py-kms](https://py-kms.readthedocs.io/en/latest/Keys.html))  
+3. Install key - slmgr /ipk {key}
+4. Set KMS server - slmgr /skms {server}
+5. Activate - slmgr /ato

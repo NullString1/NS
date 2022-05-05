@@ -1,0 +1,38 @@
+<!-- templates/datapage.html -->
+
+{% extends "base.html" %}
+{% block content %}
+<div class="accordion" id="myAccordion">
+    {% for d in data %}
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="heading{{ d.id }}">
+            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse{{ d.id }}">{{ d.title }}</button>									
+        </h2>
+        <div id="collapse{{ d.id }}" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+            <div class="card-body" id="data-{{ d.id }}">
+                <pre>{{ d.text.strip() }}</pre>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+    $( window ).on( "load", function (){
+        $(".card-body").each(function (){
+            this.innerHTML = marked.parse(this.firstElementChild.innerText);
+        });
+        new bootstrap.Collapse($(".collapse")[0], {
+            toggle: true
+        })
+    });
+</script>
+<style>
+    table { border-width: 1px; border-collapse: collapse; }
+    tr { border-width: 1px; border-bottom: solid 1px black; }
+    th { border-width: 1px; background-color: #f2f2f2;}
+    td { border-width: 1px; }
+    thead { border-width: 1px; }
+    tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+{% endblock %}
